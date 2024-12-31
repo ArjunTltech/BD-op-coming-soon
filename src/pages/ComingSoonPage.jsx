@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/
 import ThreeBackground from "./animation";
 
 const ComingSoonPage = () => {
-    const targetDate = new Date("january 15, 2025 00:00:00").getTime();
+    const targetDate = new Date("December 31, 2025 00:00:00").getTime();
 
     const calculateTimeLeft = () => {
         const now = new Date().getTime();
@@ -22,10 +22,15 @@ const ComingSoonPage = () => {
     };
 
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    const [isLive, setIsLive] = useState(false);
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setTimeLeft(calculateTimeLeft());
+            const time = calculateTimeLeft();
+            setTimeLeft(time);
+            if (time.days === 0 && time.hours === 0 && time.minutes === 0 && time.seconds === 0) {
+                setIsLive(true);
+            }
         }, 1000);
 
         return () => clearInterval(timer);
@@ -33,50 +38,61 @@ const ComingSoonPage = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 flex items-center justify-center p-4 relative overflow-hidden">
-            {/* Animation Elements */}
-            {/* <div className="absolute inset-0">
-                <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-pulse"></div>
-                <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-pulse"></div>
-            </div> */}
-                <ThreeBackground />
+            {/* Background Animation */}
+            <ThreeBackground />
+
             <div className="max-w-4xl w-full backdrop-blur-md bg-white/10 rounded-2xl shadow-2xl overflow-hidden border border-white/20">
                 <div className="p-8 md:p-12 flex flex-col items-center text-center">
-                    <div className="mb-8 flex items-center justify-center space-x-4">
+                    <div className="mb-6 flex items-center justify-center space-x-4">
                         <img
                             src="/images/logo.png"
                             alt="Being Digital Logo"
                             className="h-12 w-auto"
                         />
-                        <p className="text-blue-300 font-semibold text-3xl">Being Digital</p>
+                        <p className="text-blue-300 font-bold text-3xl">Being Digital</p>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-200">
-                        New Things Coming Soon
-                    </h1>
-                    <p className="text-gray-300 text-lg mb-12 max-w-2xl">
-                        We're crafting a revolutionary platform that will transform your
-                        digital presence. Join us on this journey to redefine digital
-                        marketing excellence.
-                    </p>
-                    {/* Countdown Timer */}
-                    <div className="grid grid-cols-4 gap-6 mb-12 px-8 py-6 rounded-lg font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg">
-                        {[
-                            { label: "Days", value: timeLeft.days },
-                            { label: "Hours", value: timeLeft.hours },
-                            { label: "Minutes", value: timeLeft.minutes },
-                            { label: "Seconds", value: timeLeft.seconds },
-                        ].map(({ label, value }, index) => (
-                            <div key={index} className="flex flex-col items-center">
-                                <div className="text-5xl font-extrabold text-white mb-2">
-                                    {value.toString().padStart(2, "0")}
-                                </div>
-                                <div className="text-sm uppercase tracking-wide text-blue-200">
-                                    {label}
-                                </div>
+
+                    {isLive ? (
+                        // When Countdown Ends
+                        <div className="flex flex-col items-center space-y-4">
+                            <h1 className="text-5xl md:text-6xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-yellow-300 animate-bounce">
+                                🎉 We Are Live Now! 🎉
+                            </h1>
+                            <p className="text-gray-300 text-lg max-w-2xl">
+                                Thank you for your patience. Explore our platform and transform your digital presence today!
+                            </p>
+                        </div>
+                    ) : (
+                        // Countdown Display
+                        <>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-200">
+                                New Things Coming Soon
+                            </h1>
+                            <p className="text-gray-300 text-lg mb-12 max-w-2xl">
+                                We're crafting a revolutionary platform that will transform your digital presence. Join us on this journey to redefine digital marketing excellence.
+                            </p>
+                            <div className="grid grid-cols-4 gap-6 mb-12 px-8 py-6 rounded-lg font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg">
+                                {[
+                                    { label: "Days", value: timeLeft.days },
+                                    { label: "Hours", value: timeLeft.hours },
+                                    { label: "Minutes", value: timeLeft.minutes },
+                                    { label: "Seconds", value: timeLeft.seconds },
+                                ].map(({ label, value }, index) => (
+                                    <div key={index} className="flex flex-col items-center">
+                                        <div className="text-5xl font-extrabold text-white mb-2">
+                                            {value.toString().padStart(2, "0")}
+                                        </div>
+                                        <div className="text-sm uppercase tracking-wide text-blue-200">
+                                            {label}
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
+                        </>
+                    )}
+
                     {/* Social Media Links */}
-                    <div className="flex gap-3 sm:gap-4 justify-center">
+                    <div className="flex gap-3 sm:gap-4 justify-center mt-6">
                         {[
                             {
                                 Icon: FaFacebookF,
@@ -104,7 +120,8 @@ const ComingSoonPage = () => {
                             </a>
                         ))}
                     </div>
-                    <div className="mt-8 text-gray-400 text-sm">
+
+                    <div className="mt-6 text-gray-400 text-sm">
                         © 2024 TL Technologies. All Rights Reserved.
                     </div>
                 </div>

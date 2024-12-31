@@ -36,11 +36,11 @@ const SceneContent = () => {
 
             {/* Floating Spheres */}
             <FloatingSphere position={[-10, 5, -8]} color="#4299e1" size={2} />
-            <FloatingSphere position={[10, -4, -9]} color="#9f7aea" size={2.5} />
-            <FloatingSphere position={[0, 8, -12]} color="#38b2ac" size={2} />
+            <FloatingSphere position={[10, -5, -9]} color="#9f7aea" size={4} />
+            <FloatingSphere position={[0, 8, -12]} color="#38b2ac" size={3} />
 
             {/* Starry Background */}
-            <Stars 
+            <Stars
                 radius={150}
                 depth={60}
                 count={5000}
