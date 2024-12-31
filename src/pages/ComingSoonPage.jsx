@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import ThreeBackground from "./animation";
 
 const ComingSoonPage = () => {
     const targetDate = new Date("january 15, 2025 00:00:00").getTime();
@@ -12,7 +13,6 @@ const ComingSoonPage = () => {
             return { days: 0, hours: 0, minutes: 0, seconds: 0 };
         }
 
-        
         return {
             days: Math.floor(difference / (1000 * 60 * 60 * 24)),
             hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
@@ -34,16 +34,16 @@ const ComingSoonPage = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 flex items-center justify-center p-4 relative overflow-hidden">
             {/* Animation Elements */}
-            <div className="absolute inset-0">
+            {/* <div className="absolute inset-0">
                 <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-pulse"></div>
                 <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-pulse"></div>
-            </div>
-
+            </div> */}
+                <ThreeBackground />
             <div className="max-w-4xl w-full backdrop-blur-md bg-white/10 rounded-2xl shadow-2xl overflow-hidden border border-white/20">
                 <div className="p-8 md:p-12 flex flex-col items-center text-center">
                     <div className="mb-8 flex items-center justify-center space-x-4">
                         <img
-                            src="public/images/logo.png"
+                            src="/images/logo.png"
                             alt="Being Digital Logo"
                             className="h-12 w-auto"
                         />
