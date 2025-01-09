@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/
 import ThreeBackground from "./animation";
 
 const ComingSoonPage = () => {
-    const targetDate = new Date("December 31, 2025 00:00:00").getTime();
+    const targetDate = new Date("January 15, 2025 00:00:00").getTime();
 
     const calculateTimeLeft = () => {
         const now = new Date().getTime();
@@ -70,7 +70,9 @@ const ComingSoonPage = () => {
                             </h1>
                             <p className="text-gray-300 text-lg mb-12 max-w-2xl">
                                 We're crafting a revolutionary platform that will transform your digital presence. Join us on this journey to redefine digital marketing excellence.
+                              <br/> <span className="font-bold">Release date: 15 Jan 2025</span> 
                             </p>
+                           
                             <div className="grid grid-cols-4 gap-6 mb-12 px-8 py-6 rounded-lg font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg">
                                 {[
                                     { label: "Days", value: timeLeft.days },
