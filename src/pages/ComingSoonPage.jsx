@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
-import ThreeBackground from "./animation";
+import ThreeBackground from "../components/animation";
 
 const ComingSoonPage = () => {
     const targetDate = new Date("January 15, 2025 00:00:00").getTime();
