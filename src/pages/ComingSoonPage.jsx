@@ -5,8 +5,8 @@ import {
     FaTwitter,
     FaGoogle
 } from "react-icons/fa";
+import ThreeBackground from "../components/animation";
 
-import ThreeBackground from "./animation";
 
 const ComingSoonPage = () => {
     const targetDate = new Date("January 15, 2025 00:00:00").getTime();
